@@ -1,50 +1,52 @@
-function generate(matLen, gr, grEat, ntr, ptr, fire, drt) {
+
+
+function generate(matrixSize, gr, grEat, ntr, ptr, fire, drt) {
     let matrix = []
-    for (let i = 0; i < matLen; i++) {
+    for (let i = 0; i < matrixSize; i++) {
         matrix[i] = []
-        for (let j = 0; j < matLen; j++) {
+        for (let j = 0; j < matrixSize; j++) {
             matrix[i][j] = 0
         }
     }
 
     for (let i = 0; i < gr; i++) {
-        let x = Math.floor(Math.random() * matLen)
-        let y = Math.floor(Math.random() * matLen)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 1
         }
     }
     for (let i = 0; i < grEat; i++) {
-        let x = Math.floor(Math.random() * matLen)
-        let y = Math.floor(Math.random() * matLen)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2
         }
     }
     for (let i = 0; i < ntr; i++) {
-        let x = Math.floor(Math.random() * matLen)
-        let y = Math.floor(Math.random() * matLen)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 3
         }
     }
     for (let i = 0; i < ptr; i++) {
-        let x = Math.floor(Math.random() * matLen)
-        let y = Math.floor(Math.random() * matLen)
+        let x = Math.floor(Math.random() * matrixSize)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 4
         }
     }
     for (let i = 0; i < fire; i++) {
         let x = 0
-        let y = Math.floor(Math.random() * matLen)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 5
         }
     }
     for (let i = 0; i < drt; i++) {
         let x = 0
-        let y = Math.floor(Math.random() * matLen)
+        let y = Math.floor(Math.random() * matrixSize)
         if (matrix[y][x] == 0) {
             matrix[y][x] = 6
         }
@@ -165,3 +167,6 @@ setInterval(() => {
         }
     }
 }, 100);
+
+
+// matrixgenerate tanel server.js , stex menak draw toxnel
