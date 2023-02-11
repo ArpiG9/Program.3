@@ -1,10 +1,7 @@
 var LivingCreature = require("./LivingCreature");
 
 class Grass extends LivingCreature {
-    constructor(x, y) {
-        super(x, y);
-        this.multiply = 0;
-    }
+    
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);

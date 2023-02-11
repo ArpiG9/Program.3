@@ -1,10 +1,7 @@
 var LivingCreature = require("./LivingCreature");
 
 class GrassEater extends LivingCreature{
-    constructor(x, y) {
-        super(x,y);
-        this.energy = 8;
-    }
+    
     mul() {
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
@@ -17,22 +14,6 @@ class GrassEater extends LivingCreature{
             var newGrassEater = new GrassEater(newX, newY);
             grassEaterArr.push(newGrassEater);
             this.energy = 8
-        }
-    }
-
-    move() {
-        this.energy--;
-        var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
-        if (newCell && this.energy >= 0) {
-            var newX = newCell[0];
-            var newY = newCell[1];
-            matrix[newY][newX] = matrix[this.y][this.x]
-            matrix[this.y][this.x] = 0
-            this.x = newX
-            this.y = newY
-        } else {
-            this.die()
         }
     }
 

@@ -3,6 +3,8 @@ class LivingCreature {
         this.x = x;
         this.y = y;
         this.directions = [];
+        this.energy = 8;
+        this.multiply = 0;
     }
     getNewCoordinates() {
         this.directions = [
@@ -29,6 +31,21 @@ class LivingCreature {
             }
         }
         return found;
+    }
+    move() {
+        this.energy--;
+        var emptyCells = this.chooseCell(0);
+        var newCell = random(emptyCells);
+        if (newCell && this.energy >= 0) {
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = matrix[this.y][this.x]
+            matrix[this.y][this.x] = 0
+            this.x = newX
+            this.y = newY
+        } else {
+            this.die()
+        }
     }
 }
 

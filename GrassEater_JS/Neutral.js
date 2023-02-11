@@ -1,10 +1,7 @@
 var LivingCreature = require("./LivingCreature");
 
 class Neutral extends LivingCreature{
-    constructor(x, y) {
-        super(x,y);
-        this.multiply = 0;
-    }
+
     eat() {
         var emptyCells = this.chooseCell(2);
         var newCell = random(emptyCells);

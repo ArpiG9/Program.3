@@ -1,10 +1,7 @@
 var LivingCreature = require("./LivingCreature");
 
 class Dirt extends LivingCreature{
-    constructor(x, y) {
-        super(x,y);
-        this.multiply = 0;
-    }
+    
     mul() {
         var emptyCells1 = this.chooseCell(0);
         var newCell1 = random(emptyCells1);
