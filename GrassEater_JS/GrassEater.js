@@ -1,4 +1,4 @@
-var LivingCreature = require("./LivingCreature");
+// var LivingCreature = require("./LivingCreature");
 
 class GrassEater extends LivingCreature{
     
@@ -53,4 +53,4 @@ class GrassEater extends LivingCreature{
     }
 }
 
-module.exports = new GrassEater;
+// module.exports = new GrassEater;

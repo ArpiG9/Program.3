@@ -1,7 +1,24 @@
+// var LivingCreature = require("./LivingCreature");
+// var expGrass = require("./Grass");
+// var expGrassEater = require("./GrassEater");
+// var expNeutral = require("./Neutral");
+// var expPredator = require("./Predator");
+// var expThunder = require("./Thunder");
+// var expDirt = require("./Dirt");
+
+let matrix = []
+grassArr = []
+grassEaterArr = []
+neutralArr = []
+predatorArr = []
+fireArr = []
+dirtArr = []
+
+side = 20;
 
 
 function generate(matrixSize, gr, grEat, ntr, ptr, fire, drt) {
-    let matrix = []
+    var matrix = []
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = []
         for (let j = 0; j < matrixSize; j++) {
@@ -56,16 +73,10 @@ function generate(matrixSize, gr, grEat, ntr, ptr, fire, drt) {
 }
 
 
-let matrix = generate(35, 145, 20, 15, 45, 5, 10)
+matrix = generate(35, 145, 20, 15, 45, 5, 10)
 
 
-var side = 15;
-let grassArr = []
-let grassEaterArr = []
-let neutralArr = []
-let predatorArr = []
-let fireArr = []
-let dirtArr = []
+
 
 function setup() {
     frameRate(5);
