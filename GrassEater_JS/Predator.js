@@ -1,5 +1,3 @@
-var LivingCreature = require("./LivingCreature");
-
 class Predator extends LivingCreature{
     
     mul() {
@@ -51,4 +49,3 @@ class Predator extends LivingCreature{
 
     }
 }
-module.exports = new Predator;

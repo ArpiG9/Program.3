@@ -1,5 +1,3 @@
-var LivingCreature = require("./LivingCreature");
-
 class Neutral extends LivingCreature{
 
     eat() {
@@ -31,4 +29,3 @@ class Neutral extends LivingCreature{
 
     }
 }
-module.exports = new Neutral;

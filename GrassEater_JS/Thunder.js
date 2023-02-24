@@ -1,6 +1,7 @@
 class Thunder{
     constructor(x, y) {
-        super(x,y)
+        this.x = x;
+        this.y = y;
         this.directions = [];
     }
     chooseCell(character) {
@@ -66,5 +67,3 @@ class Thunder{
     }
 
 }
-
-module.exports = new Thunder;

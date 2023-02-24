@@ -48,5 +48,3 @@ class LivingCreature {
         }
     }
 }
-
-module.exports = new LivingCreature;
