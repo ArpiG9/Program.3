@@ -1,4 +1,4 @@
-class Thunder{
+module.exports = class Thunder{
     constructor(x, y) {
         this.x = x;
         this.y = y;

@@ -1,4 +1,4 @@
-class LivingCreature {
+module.exports = class LivingCreature {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -25,7 +25,7 @@ class LivingCreature {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == ch) {
+                if (matrix[y][x] == character) {
                     found.push(this.directions[i]);
                 }
             }
@@ -35,7 +35,7 @@ class LivingCreature {
     move() {
         this.energy--;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.round(Math.random()*emptyCells.length)];
         if (newCell && this.energy >= 0) {
             var newX = newCell[0];
             var newY = newCell[1];

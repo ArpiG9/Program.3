@@ -1,8 +1,10 @@
-class Predator extends LivingCreature{
+var LivingCreature = require("./LivingCreature");
+
+module.exports = class Predator extends LivingCreature{
     
     mul() {
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.round(Math.random()*emptyCells.length)];
 
         if (newCell) {
             var newX = newCell[0];
@@ -16,7 +18,7 @@ class Predator extends LivingCreature{
     }
     eat() {
         var emptyCells = this.chooseCell(2);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.round(Math.random()*emptyCells.length)];
         if (newCell) {
             this.energy++
             var newX = newCell[0];

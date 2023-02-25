@@ -1,8 +1,10 @@
-class Neutral extends LivingCreature{
+var LivingCreature = require("./LivingCreature");
+
+module.exports = class Neutral extends LivingCreature{
 
     eat() {
         var emptyCells = this.chooseCell(2);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.round(Math.random()*emptyCells.length)];
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
