@@ -1,6 +1,16 @@
 var socket = io();
+var restart = document.getElementById("restart");
+// socket.emit("send restart", restart)
+
+// var stat.grass = document.getElementById("grass");
+// var restart = document.getElementById("restart");
+// var restart = document.getElementById("restart");
+// var restart = document.getElementById("restart");
+
+// restart.addEventListener("click", drawing);
 
 socket.on('send matrix', drawing);
+
 
 side = 20;
 
@@ -45,3 +55,4 @@ function drawing(matrix) {
         }
     }
 }
+
