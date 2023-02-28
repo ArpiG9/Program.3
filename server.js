@@ -1,4 +1,5 @@
 var express = require("express");
+var fs = require("fs");
 var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
@@ -16,6 +17,13 @@ matrix = [1, 1, 1];
 io.on("connection", function(socket) {
   createObject();
 });
+
+stat = {
+  grass: 0,
+  grasseater: 0,
+  predator: 0,
+  neutral: 0,
+}
 
 
 grassArr = [];
@@ -109,45 +117,54 @@ function createObject() {
   }
 }
 
+
 function game() {
   for (var i in grassArr) {
     grassArr[i].mul();
   }
 
+  stat.grass = i;
   for (let i in grassEaterArr) {
     grassEaterArr[i].eat();
   }
 
+  stat.grasseater = i;
   for (let i in bombArr) {
     if (grassEaterArr.length == 0) {
       bombArr[i].mul();
     }
   }
 
+  stat.predator = i;
   for (var i in predatorArr) {
     predatorArr[i].eat();
     if (grassEaterArr.length == 0) {
       predatorArr[i].die();
     }
   }
+
+  stat.neutral = i;
   for (var i in neutralArr) {
     neutralArr[i].eat();
     if (grassEaterArr.length == 0) {
       neutralArr[i].die();
     }
   }
+  if (grassEaterArr.length == 0){
+    console.log("baaaa");
+  }
+
+  io.sockets.emit("grasseater", stat);
 
   io.sockets.emit("send matrix", matrix);
 }
 
-
-
 setInterval(game, 150);
 
-// setInterval(() => {
-//     if (grassEaterArr.length = 1) {
-//         for (var i in thunderArr) {
-//             thunderArr[i].flash()
-//         }
-//     }
-// }, 100);
+setInterval(() => {
+    if (grassEaterArr.length < 10) {
+        for (var i in thunderArr) {
+            thunderArr[i].flash()
+        }
+    }
+}, 100);

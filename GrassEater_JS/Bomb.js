@@ -15,22 +15,22 @@ module.exports = class Bomb extends LivingCreature{
             var newY1 = newCell1[1];
             matrix[newY1][newX1] = 6;
 
-            var newdirt = new Bomb(newX1, newY1);
-            dirtArr.push(newdirt);
+            var newbomb = new Bomb(newX1, newY1);
+            bombArr.push(newbomb);
         } else if (newCell2) {
             var newX2 = newCell2[0];
             var newY2 = newCell2[1];
             matrix[newY2][newX2] = 6;
 
-            var newdirt = new Bomb(newX2, newY2);
-            dirtArr.push(newdirt);
+            var newbomb = new Bomb(newX2, newY2);
+            bombArr.push(newbomb);
         } else if (newCell3) {
             var newX3 = newCell3[0];
             var newY3 = newCell3[1];
             matrix[newY3][newX3] = 6;
 
-            var newdirt = new Bomb(newX3, newY3);
-            dirtArr.push(newdirt);
+            var newbomb = new Bomb(newX3, newY3);
+            bombArr.push(newbomb);
         }
 
     }

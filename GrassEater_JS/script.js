@@ -2,12 +2,11 @@ var socket = io();
 var restart = document.getElementById("restart");
 // socket.emit("send restart", restart)
 
-// var stat.grass = document.getElementById("grass");
-// var restart = document.getElementById("restart");
-// var restart = document.getElementById("restart");
-// var restart = document.getElementById("restart");
+var winter = document.getElementById("winter");
+var summer = document.getElementById("summer");
 
-// restart.addEventListener("click", drawing);
+winter.addEventListener("click", weath);
+summer.addEventListener("click", weath);
 
 socket.on('send matrix', drawing);
 
@@ -28,7 +27,7 @@ function drawing(matrix) {
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                fill("green");
+                    fill("green");
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -56,3 +55,21 @@ function drawing(matrix) {
     }
 }
 
+socket.on("grasseater", statistics);
+
+console.log();
+
+function statistics(stat) {
+    document.getElementById("grass").innerHTML = stat.grass;
+    document.getElementById("grasseater").innerHTML = stat.grasseater;
+    document.getElementById("predator").innerHTML = stat.predator;
+    document.getElementById("neutral").innerHTML = stat.neutral;
+}
+
+function weath(evt) {
+    if (winter) {
+        fill("white")
+    }else{
+        fill("green");
+    }
+}
