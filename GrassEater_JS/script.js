@@ -1,15 +1,52 @@
 var socket = io();
-var restart = document.getElementById("restart");
-// socket.emit("send restart", restart)
-
+var clear = document.getElementById("clear");
 var winter = document.getElementById("winter");
 var summer = document.getElementById("summer");
+var spring = document.getElementById("spring");
+var autumn = document.getElementById("autumn");
+var lightning = document.getElementById("lightning");
+var bomb = document.getElementById("bomb");
 
-winter.addEventListener("click", weath);
-summer.addEventListener("click", weath);
+bomb.addEventListener("click", loo); 
+function loo() {
+    socket.emit("bomb")
+}
+
+lightning.addEventListener("click", send); 
+function send() {
+    console.log(lightning);
+    
+    socket.emit("lightning", lightning)
+}
+
+clear.addEventListener("click", Clear); 
+function Clear() {
+    socket.emit("clear")
+}
+
+winter.addEventListener("click", foo);
+function foo(){
+    console.log("foo")
+    socket.emit("wint", winter)
+}
+
+summer.addEventListener("click", boo);
+function boo(){
+    socket.emit("sum", summer)
+}
+
+spring.addEventListener("click", too);
+function too(){
+    socket.emit("spr", spring)
+}
+
+autumn.addEventListener("click", woo);
+function woo(){
+    socket.emit("aut", autumn)
+}
 
 socket.on('send matrix', drawing);
-
+socket.on('send weather', drawing);
 
 side = 20;
 
@@ -20,31 +57,44 @@ function setup() {
     background('#acacac');
 
 }
+let matrixLOc = []
+function drawing(info) {
+ console.log(info.matrix);
+ 
+    
+    for (var y = 0; y < info.matrix.length; y++) {
+        for (var x = 0; x < info.matrix[y].length; x++) {
 
-function drawing(matrix) {
-
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-
-            if (matrix[y][x] == 1) {
+            if (info.matrix[y][x] == 1) {
+                if (info.weather == "dzmer") {
+                    fill("#99baba");
+                } else if(info.weather == "amar"){
                     fill("green");
+                }
+                else if(info.weather == "garun"){
+                    fill("pink");
+                }else if(info.weather == "ashun"){
+                    fill("orange");
+                 }
+                
+                   
             }
-            else if (matrix[y][x] == 0) {
-                fill("#acacac");
+            else if (info.matrix[y][x] == 0) {
+                fill("white");
             }
-            else if (matrix[y][x] == 2) {
+            else if (info.matrix[y][x] == 2) {
                 fill("yellow");
             }
-            else if (matrix[y][x] == 3) {
+            else if (info.matrix[y][x] == 3) {
                 fill("purple");
             }
-            else if (matrix[y][x] == 4) {
+            else if (info.matrix[y][x] == 4) {
                 fill("red");
             }
-            else if (matrix[y][x] == 5) {
+            else if (info.matrix[y][x] == 5) {
                 fill("blue");
             }
-            else if (matrix[y][x] == 6) {
+            else if (info.matrix[y][x] == 6) {
                 fill("black");
             }
 
@@ -56,8 +106,7 @@ function drawing(matrix) {
 }
 
 socket.on("grasseater", statistics);
-
-console.log();
+console.log(matrixLOc);
 
 function statistics(stat) {
     document.getElementById("grass").innerHTML = stat.grass;
@@ -66,10 +115,3 @@ function statistics(stat) {
     document.getElementById("neutral").innerHTML = stat.neutral;
 }
 
-function weath(evt) {
-    if (winter) {
-        fill("white")
-    }else{
-        fill("green");
-    }
-}

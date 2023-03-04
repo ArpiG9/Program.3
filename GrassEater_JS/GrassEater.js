@@ -1,7 +1,11 @@
 var LivingCreature = require("./LivingCreature");
 
 module.exports = class GrassEater extends LivingCreature{
-    
+    constructor(x, y) {
+        super(x, y);
+        this.energy = 8;
+        this.mulTime = 20;
+    }
     mul() {
         var emptyCells = this.chooseCell(0);
         var newCell = emptyCells[Math.round(Math.random()*emptyCells.length)];
@@ -13,7 +17,7 @@ module.exports = class GrassEater extends LivingCreature{
 
             var newGrassEater = new GrassEater(newX, newY);
             grassEaterArr.push(newGrassEater);
-            this.energy = 8
+            this.energy = 8;
         }
     }
 
@@ -35,7 +39,7 @@ module.exports = class GrassEater extends LivingCreature{
                 }
             }
 
-            if (this.energy >= 20) {
+            if (this.energy >= this.mulTime) {
                 this.mul()
             }
         } else {

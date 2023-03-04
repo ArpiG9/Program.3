@@ -9,6 +9,10 @@ module.exports = class Bomb extends LivingCreature{
         var newCell2 = emptyCells2[Math.round(Math.random()*emptyCells2.lenghth)];
         var emptyCells3 = this.chooseCell(5);
         var newCell3 = emptyCells3[Math.round(Math.random()*emptyCells3.lenghth)];
+        var emptyCells4 = this.chooseCell(2);
+        var newCell4 = emptyCells4[Math.round(Math.random()*emptyCells4.lenghth)];
+        var emptyCells5 = this.chooseCell(3);
+        var newCell5 = emptyCells5[Math.round(Math.random()*emptyCells5.lenghth)];
 
         if (newCell1) {
             var newX1 = newCell1[0];
@@ -30,6 +34,20 @@ module.exports = class Bomb extends LivingCreature{
             matrix[newY3][newX3] = 6;
 
             var newbomb = new Bomb(newX3, newY3);
+            bombArr.push(newbomb);
+        } else if (newCell4) {
+            var newX4 = newCell4[0];
+            var newY4 = newCell4[1];
+            matrix[newY4][newX4] = 6;
+
+            var newbomb = new Bomb(newX4, newY4);
+            bombArr.push(newbomb);
+        } else if (newCell5) {
+            var newX5 = newCell5[0];
+            var newY5 = newCell5[1];
+            matrix[newY5][newX5] = 6;
+
+            var newbomb = new Bomb(newX5, newY5);
             bombArr.push(newbomb);
         }
 

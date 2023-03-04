@@ -11,14 +11,30 @@
 </head>
 <body>
     <h1>Game of Life</h1>
-    <button id="restart">Restart</button>
-    <button id="winter">ձմեռ</button>
-    <button id="summer">ամառ</button> <br> <br>
-    <div>
-        <p>խոտ -</p><p id="grass">խոտ</p>
-        <p>խոտակեր -</p><p id="grasseater">խոտակեր</p>
-        <p>գիշատիչ -</p><p id="predator">գիշատիչ</p>
-        <p>նեյտրալ -</p><p id="neutral">նեյտրալ</p>
+
+    <button id="clear">Clear All</button>
+    <button id="winter">Ձմեռ</button>
+    <button id="summer">Ամառ</button>
+    <button id="spring">Գարուն</button>
+    <button id="autumn">Աշուն</button> 
+    <button id="lightning">Lightning</button>
+    <button id="bomb">Bomb</button>
+    <br> <br>
+
+    <div class="container">
+        <div class="stats">
+        <div class="par"><p>խոտ -</p><p id="grass"> gg</p></div>
+        <div class="par"><p>խոտակեր - </p><p id="grasseater">խոտակեր</p></div>
+        <div class="par"><p>գիշատիչ - </p><p id="predator">գիշատիչ</p></div>
+        <div class="par"><p>նեյտրալ - </p><p id="neutral">նեյտրալ</p></div>
+        </div>
+
+        <div class="info">
+            <p>Ձմռանը խոտը դանդաղ է բազմանում</p>
+            <p>Գարնանը խոտը արագ է բազմանում</p>
+            <p>Ամռանը խոտակերը արագ է բազմանում</p>
+            <p>Աշնանը գիշատիչը արագ է բազմանում</p>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
