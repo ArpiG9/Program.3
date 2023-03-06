@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/socket.io/socket.io.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Game of Life</h1>
 
-    <button id="clear">Clear All</button>
-    <button id="winter">Ձմեռ</button>
-    <button id="summer">Ամառ</button>
-    <button id="spring">Գարուն</button>
-    <button id="autumn">Աշուն</button> 
-    <button id="lightning">Lightning</button>
-    <button id="bomb">Bomb</button>
-    <br> <br>
+    <div class="container1">
+      <div class="weather">
+        <button class="button-83" id="winter">Ձմեռ</button>
+        <button class="button-83" id="spring">Գարուն</button>
+        <button class="button-83" id="summer">Ամառ</button>
+        <button class="button-83" id="autumn">Աշուն</button>
+      </div>
+      <div class="methods">
+        <button class="button-77" role="button" id="clear">Clear All</button>
+        <button class="button-78" role="button" id="lightning">Lightning</button>
+      </div>
+    </div>
+
+    <br />
+    <br />
 
     <div class="container">
-        <div class="stats">
-        <div class="par"><p>խոտ -</p><p id="grass"> gg</p></div>
-        <div class="par"><p>խոտակեր - </p><p id="grasseater">խոտակեր</p></div>
-        <div class="par"><p>գիշատիչ - </p><p id="predator">գիշատիչ</p></div>
-        <div class="par"><p>նեյտրալ - </p><p id="neutral">նեյտրալ</p></div>
+      <div class="stats">
+        <div class="par">
+          <p>խոտ -</p>
+          <p id="grass">gg</p>
         </div>
+        <div class="par">
+          <p>խոտակեր -</p>
+          <p id="grasseater">խոտակեր</p>
+        </div>
+        <div class="par">
+          <p>գիշատիչ -</p>
+          <p id="predator">գիշատիչ</p>
+        </div>
+        <div class="par">
+          <p>նեյտրալ -</p>
+          <p id="neutral">նեյտրալ</p>
+        </div>
+        <div class="par">
+            <p>օձ -</p>
+            <p id="oc">օձ</p>
+          </div>
+      </div>
 
-        <div class="info">
-            <p>Ձմռանը խոտը դանդաղ է բազմանում</p>
-            <p>Գարնանը խոտը արագ է բազմանում</p>
-            <p>Ամռանը խոտակերը արագ է բազմանում</p>
-            <p>Աշնանը գիշատիչը արագ է բազմանում</p>
-        </div>
+      <div class="info">
+        <p>* Ձմռանը խոտը դանդաղ է բազմանում</p>
+        <p>* Գարնանը խոտը արագ է բազմանում</p>
+        <p>* Ամռանը խոտակերը արագ է բազմանում</p>
+        <p>* Աշնանը գիշատիչը արագ է բազմանում</p>
+      </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
     <script src="script.js"></script>
-
- 
-</body>
+  </body>
 </html>
-

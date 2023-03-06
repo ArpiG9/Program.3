@@ -1,16 +1,11 @@
 var socket = io();
+
 var clear = document.getElementById("clear");
 var winter = document.getElementById("winter");
 var summer = document.getElementById("summer");
 var spring = document.getElementById("spring");
 var autumn = document.getElementById("autumn");
 var lightning = document.getElementById("lightning");
-var bomb = document.getElementById("bomb");
-
-bomb.addEventListener("click", loo); 
-function loo() {
-    socket.emit("bomb")
-}
 
 lightning.addEventListener("click", send); 
 function send() {
@@ -70,10 +65,9 @@ function drawing(info) {
                     fill("#99baba");
                 } else if(info.weather == "amar"){
                     fill("green");
-                }
-                else if(info.weather == "garun"){
+                } else if(info.weather == "garun"){
                     fill("pink");
-                }else if(info.weather == "ashun"){
+                } else if(info.weather == "ashun"){
                     fill("orange");
                  }
                 
@@ -113,5 +107,6 @@ function statistics(stat) {
     document.getElementById("grasseater").innerHTML = stat.grasseater;
     document.getElementById("predator").innerHTML = stat.predator;
     document.getElementById("neutral").innerHTML = stat.neutral;
+    document.getElementById("oc").innerHTML = stat.oc;
 }
 

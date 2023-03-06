@@ -18,6 +18,7 @@ stat = {
   grasseater: 0,
   predator: 0,
   neutral: 0,
+  oc: 0,
 }
 
 grassArr = [];
@@ -25,7 +26,8 @@ grassEaterArr = [];
 neutralArr = [];
 predatorArr = [];
 thunderArr = [];
-bombArr = [];
+ocArr = [];
+
 
 LivingCreature = require("./GrassEater_JS/LivingCreature");
 Grass = require("./GrassEater_JS/Grass");
@@ -33,9 +35,10 @@ GrassEater = require("./GrassEater_JS/GrassEater");
 Neutral = require("./GrassEater_JS/Neutral");
 Predator = require("./GrassEater_JS/Predator");
 Thunder = require("./GrassEater_JS/Thunder");
-Bomb = require("./GrassEater_JS/Bomb");
+Oc = require("./GrassEater_JS/Oc");
 
-function generate(matrixSize, gr, grEat, ntr, ptr, thunder, bomb) {
+
+function generate(matrixSize, gr, grEat, ntr, ptr, thunder, oc) {
   matrix = [];
   for (let i = 0; i < matrixSize; i++) {
     matrix[i] = [];
@@ -79,17 +82,18 @@ function generate(matrixSize, gr, grEat, ntr, ptr, thunder, bomb) {
       matrix[y][x] = 5;
     }
   }
-  for (let i = 0; i < bomb; i++) {
+  for (let i = 0; i < oc; i++) {
     let x = 0;
     let y = Math.floor(Math.random() * matrixSize);
     if (matrix[y][x] == 0) {
       matrix[y][x] = 6;
     }
   }
+  
   return matrix;
 }
 
-matrix = generate(35, 170, 40, 25, 25, 5, 10);
+matrix = generate(35, 200, 30, 25, 25, 5, 20);
 
 function createObject() {
   for (var y = 0; y < matrix.length; y++) {
@@ -105,8 +109,9 @@ function createObject() {
       } else if (matrix[y][x] == 5) {
         thunderArr.push(new Thunder(x, y));
       } else if (matrix[y][x] == 6) {
-        bombArr.push(new Bomb(x, y));
-      }
+        ocArr.push(new Oc(x, y));
+      } 
+    
     }
   }
 }
@@ -116,31 +121,36 @@ function game() {
   for (var i in grassArr) {
     grassArr[i].mul();
   }
-
   stat.grass = i;
+  
   for (let i in grassEaterArr) {
     grassEaterArr[i].eat();
   }
-
   stat.grasseater = i;
   
-
-  stat.predator = i;
   for (var i in predatorArr) {
     predatorArr[i].eat();
     if (grassEaterArr.length == 0) {
       predatorArr[i].die();
     }
   }
-
-  stat.neutral = i;
+  stat.predator = i;
+  
   for (var i in neutralArr) {
     neutralArr[i].eat();
     if (grassEaterArr.length == 0) {
       neutralArr[i].die();
     }
   }
+  stat.neutral = i;
 
+  for (var i in ocArr) {
+    ocArr[i].eat();
+    if (grassEaterArr.length == 0) {
+      ocArr[i].die();
+    }
+  }
+  stat.oc = i;
 
   io.sockets.emit("grasseater", stat);
 
@@ -162,12 +172,6 @@ function Flash() {
   
 }
 
-function BOOM() {
-  for (let i in bombArr) {
-    bombArr[i].mul();
-  }
-  io.sockets.emit("send matrix", info);
-}
 
 info = {
   matrix: matrix,
@@ -215,14 +219,14 @@ function Clear() {
   neutralArr = [];
   predatorArr = [];
   thunderArr = [];
-  bombArr = [];
+  ocArr = [];
 
   for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
       matrix[y][x] = 0;
     }
   }
-  io.sockets.emit("pls work".matrix);
+  io.sockets.emit("pls work", matrix);
 }
 
 io.on("connection", function (socket) {
@@ -233,9 +237,4 @@ io.on("connection", function (socket) {
   socket.on("aut", aut);
   socket.on("clear", Clear);
   socket.on("lightning", Flash);
-  socket.on("bomb", BOOM);
 });
-
-
-
-// !!!!!!!  Bomb-y darcnel kerpal ev +1 kerpar
